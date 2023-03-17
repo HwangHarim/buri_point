@@ -13,7 +13,7 @@
 | [손장미](https://github.com/sonrose) | [염지원](https://github.com/xx10222) | [황인준](https://github.com/InJun2) | [황하림](https://github.com/HwangHarim) | [김기현](https://github.com/KimKiHyun0206) | [이상호](https://github.com/LSH-3016) |
 | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
 | <img src="https://www.tv-asahi.co.jp/shinchan/character/img/01.png" width="150"/> | <img src="https://www.tv-asahi.co.jp/shinchan/character/img/04.png" width="150"/> | <img src="https://www.tv-asahi.co.jp/shinchan/character/img/13.png" width="150"/> | <img src="https://www.tv-asahi.co.jp/shinchan/character/img/11.png" width="150"/> | <img src="https://www.tv-asahi.co.jp/shinchan/character/img/10.png" width="150"/> | <img src="https://www.tv-asahi.co.jp/shinchan/character/img/12.png" width="150"/> |
-| 결제 서비스 담당 | 정산하기 담당 | 회원 관리 담당 | 충전 및 이체 담당 | 이체 내역 조회 담당 | 인프라 담당 |
+| 결제 서비스 담당 | 정산하기 담당 | 회원 관리 담당 | 충전 및 이체 담당 | 내역 조회 담당 | 인프라 담당 |
 
 <br>
 
