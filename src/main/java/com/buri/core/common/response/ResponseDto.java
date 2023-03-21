@@ -1,8 +1,9 @@
-package com.buri.core.common.Response;
+package com.buri.core.common.response;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import lombok.Getter;
+import org.springframework.http.ResponseEntity;
 
 @Getter
 public class ResponseDto<T> {
@@ -15,5 +16,15 @@ public class ResponseDto<T> {
         this.message = message.name();
         this.serverDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         this.data = data;
+    }
+
+    public static <T> ResponseEntity<ResponseDto<T>> of(ResponseMessage message, T data) {
+        return ResponseEntity
+            .status(
+                message.getStatus()
+            )
+            .body(
+                new ResponseDto<>(message, data)
+            );
     }
 }

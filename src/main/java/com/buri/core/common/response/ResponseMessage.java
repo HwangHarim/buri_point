@@ -1,4 +1,4 @@
-package com.buri.core.common.Response;
+package com.buri.core.common.response;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
