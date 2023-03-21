@@ -27,14 +27,4 @@ public class ResponseDto<T> {
                         new ResponseDto<>(message, data)
                 );
     }
-
-    public static <T> ResponseEntity<ResponseDto<Void>> noContent(ResponseMessage message) {
-        return ResponseEntity
-                .status(
-                        message.getStatus()
-                )
-                .body(
-                        new ResponseDto<>(message, null)
-                );
-    }
 }

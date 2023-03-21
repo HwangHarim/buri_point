@@ -36,7 +36,7 @@ public class MemberController {
     public ResponseEntity<ResponseDto<Void>> withdrawMember(@PathVariable Long id) {
         memberService.withdrawMember(id);
 
-        return ResponseDto.noContent(ResponseMessage.OK);
+        return ResponseDto.of(ResponseMessage.NO_CONTENT, null);
     }
 
     @PatchMapping("/{id}")
