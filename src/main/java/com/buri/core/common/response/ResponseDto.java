@@ -20,11 +20,11 @@ public class ResponseDto<T> {
 
     public static <T> ResponseEntity<ResponseDto<T>> of(ResponseMessage message, T data) {
         return ResponseEntity
-                .status(
-                        message.getStatus()
-                )
-                .body(
-                        new ResponseDto<>(message, data)
-                );
+            .status(
+                message.getStatus()
+            )
+            .body(
+                new ResponseDto<>(message, data)
+            );
     }
 }
