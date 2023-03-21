@@ -4,8 +4,7 @@ import com.buri.core.common.Response.Handler.ResponseHandler;
 import com.buri.core.common.Response.ResponseDto;
 import com.buri.core.common.Response.ResponseMessage;
 import com.buri.core.member.application.MemberService;
-import com.buri.core.member.model.dto.request.CreateMemberRequest;
-import com.buri.core.member.model.dto.response.MemberResponse;
+import com.buri.core.member.dto.request.CreateMemberRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,4 +27,5 @@ public class MemberController {
 
         return responseHandler.toResponseEntity(ResponseMessage.CREATE_SUCCESS, response);
     }
+
 }

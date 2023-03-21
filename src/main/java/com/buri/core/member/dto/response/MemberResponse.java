@@ -1,5 +1,8 @@
-package com.buri.core.member.model.dto.response;
+package com.buri.core.member.dto.response;
 
+import com.buri.core.member.domain.vo.Email;
+import com.buri.core.member.domain.vo.PhoneNumber;
+import com.buri.core.member.domain.vo.PinNumber;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,14 +21,14 @@ public class MemberResponse {
 
     @Builder
     public MemberResponse (Long id, String name,
-                           String phoneNumber, String email,
-                           String password, String pin, Long point) {
+                           PhoneNumber phoneNumber, Email email,
+                           String password, PinNumber pin, Long point) {
         this.id = id;
         this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.phoneNumber = phoneNumber.getPhoneNumber();
+        this.email = email.getEmail();
         this.password = password;
-        this.pin = pin;
+        this.pin = pin.getPinNumber();
         this.point = point;
     }
 }

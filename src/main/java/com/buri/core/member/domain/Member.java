@@ -1,7 +1,10 @@
 package com.buri.core.member.domain;
 
 import com.buri.core.common.domain.BaseTime;
-import com.buri.core.member.model.dto.response.MemberResponse;
+import com.buri.core.member.domain.vo.Email;
+import com.buri.core.member.domain.vo.PhoneNumber;
+import com.buri.core.member.domain.vo.PinNumber;
+import com.buri.core.member.dto.response.MemberResponse;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,23 +26,26 @@ public class Member extends BaseTime {
     private String name;
 
     @Column
-    private String phoneNumber;
+    @Embedded
+    private PhoneNumber phoneNumber;
 
     @Column
-    private String email;
+    @Embedded
+    private Email email;
 
     @Column
     private String password;
 
     @Column
-    private String pin;
+    @Embedded
+    private PinNumber pin;
 
     @Column
     private Long point;
 
     @Builder
-    public Member(String name, String phoneNumber, String email
-            , String password, String pin) {
+    public Member(String name, PhoneNumber phoneNumber, Email email
+            , String password, PinNumber pin) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
