@@ -2,8 +2,10 @@ package com.buri.core.member.domain;
 
 import com.buri.core.common.domain.BaseTime;
 import com.buri.core.member.domain.vo.Email;
+import com.buri.core.member.domain.vo.MemberState;
 import com.buri.core.member.domain.vo.PhoneNumber;
 import com.buri.core.member.domain.vo.PinNumber;
+import com.buri.core.member.dto.request.UpdateMemberRequest;
 import com.buri.core.member.dto.response.MemberResponse;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -43,6 +45,10 @@ public class Member extends BaseTime {
     @Column
     private Long point;
 
+    @Column
+    @Enumerated
+    private MemberState state;
+
     @Builder
     public Member(String name, PhoneNumber phoneNumber, Email email
             , String password, PinNumber pin) {
@@ -52,6 +58,7 @@ public class Member extends BaseTime {
         this.password = password;
         this.pin = pin;
         this.point = 3000L;
+        this.state = MemberState.ACTIVE;
     }
 
     public MemberResponse toResponseDto() {
@@ -64,5 +71,15 @@ public class Member extends BaseTime {
                 .pin(this.pin)
                 .point(this.point)
                 .build();
+    }
+
+    public void withdrawMember() {
+        this.state = MemberState.INACTIVE;
+    }
+
+    public void updateMember(UpdateMemberRequest request) {
+        this.phoneNumber = request.getPhoneNumber();
+        this.pin = request.getPin();
+        this.password = request.getPassword();
     }
 }

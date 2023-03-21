@@ -5,13 +5,11 @@ import com.buri.core.common.Response.ResponseDto;
 import com.buri.core.common.Response.ResponseMessage;
 import com.buri.core.member.application.MemberService;
 import com.buri.core.member.dto.request.CreateMemberRequest;
+import com.buri.core.member.dto.request.UpdateMemberRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,4 +26,25 @@ public class MemberController {
         return responseHandler.toResponseEntity(ResponseMessage.CREATE_SUCCESS, response);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseDto> searchMember(@PathVariable Long id) {
+        var response = memberService.searchMember(id);
+
+        return responseHandler.toResponseEntity(ResponseMessage.OK, response);
+    }
+
+    @PatchMapping("/delete/{id}")
+    public ResponseEntity<ResponseDto> withdrawMember(@PathVariable Long id) {
+        Long withdrawMemberId = memberService.withdrawMember(id);
+
+        return responseHandler.toResponseEntity(ResponseMessage.OK, "회원탈퇴 완료. 반환값 없음");
+        // ResponseDto 전역 클래스 수정 후 수정 예정
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ResponseDto> updateMember(@PathVariable Long id, @Valid @RequestBody UpdateMemberRequest request) {
+        var updataMember = memberService.updateMember(id, request);
+
+        return responseHandler.toResponseEntity(ResponseMessage.OK, updataMember);
+    }
 }

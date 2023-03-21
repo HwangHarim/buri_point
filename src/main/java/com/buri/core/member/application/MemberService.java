@@ -4,6 +4,7 @@ import com.buri.core.member.domain.Member;
 import com.buri.core.member.domain.vo.Email;
 import com.buri.core.member.domain.vo.PhoneNumber;
 import com.buri.core.member.domain.vo.PinNumber;
+import com.buri.core.member.dto.request.UpdateMemberRequest;
 import com.buri.core.member.exception.BlankContentJoinException;
 import com.buri.core.member.exception.InvalidEmailException;
 import com.buri.core.member.exception.InvalidPhoneNumberException;
@@ -52,5 +53,29 @@ public class MemberService {
         if(account.isPresent()) {
             throw new DuplicateRequestException();
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Member searchMember(Long id) {
+        var searchMember = memberRepository.findById(id).get();
+
+        return searchMember;
+    }
+
+    @Transactional
+    public Long withdrawMember(Long id) {
+        var withdrawMember = searchMember(id);
+        withdrawMember.withdrawMember();
+        memberRepository.save(withdrawMember);
+
+        return withdrawMember.getId();
+    }
+
+    @Transactional
+    public Member updateMember(Long id, UpdateMemberRequest request) {
+        var updateMember = searchMember(id);
+        updateMember.updateMember(request);
+
+        return updateMember;
     }
 }
