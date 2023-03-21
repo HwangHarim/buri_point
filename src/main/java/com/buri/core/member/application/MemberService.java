@@ -63,19 +63,19 @@ public class MemberService {
     }
 
     @Transactional
-    public Long withdrawMember(Long id) {
+    public MemberResponse withdrawMember(Long id) {
         var withdrawMember = searchMember(id);
         withdrawMember.withdrawMember();
         memberRepository.save(withdrawMember);
 
-        return withdrawMember.getId();
+        return withdrawMember.toResponseDto();
     }
 
     @Transactional
-    public Member updateMember(Long id, UpdateMemberRequest request) {
+    public MemberResponse updateMember(Long id, UpdateMemberRequest request) {
         var updateMember = searchMember(id);
         updateMember.updateMember(request);
 
-        return updateMember;
+        return updateMember.toResponseDto();
     }
 }
