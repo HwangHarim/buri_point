@@ -1,5 +1,6 @@
 package com.buri.core.member.domain.vo;
 
+import com.buri.core.member.exception.InvalidPhoneNumberException;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Transient;
 import lombok.Getter;
@@ -11,9 +12,6 @@ import java.util.regex.Pattern;
 public class PhoneNumber {
     @Transient
     private static final String PHONE_REGEX = "^01(?:0|1|[6-9])+-(\\d{3}|\\d{4})+-(\\d{4})$";
-
-    @Transient
-    public final static String NO_PHONE = "NO_PHONE";
 
     private String phoneNumber;
 
@@ -28,6 +26,6 @@ public class PhoneNumber {
         if (Pattern.matches(PHONE_REGEX, phoneNumber)) {
             return phoneNumber;
         }
-        return NO_PHONE;
+        throw new InvalidPhoneNumberException();
     }
 }

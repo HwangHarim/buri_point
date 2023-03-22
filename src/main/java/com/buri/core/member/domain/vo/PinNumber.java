@@ -1,5 +1,6 @@
 package com.buri.core.member.domain.vo;
 
+import com.buri.core.member.exception.InvalidPinNumberException;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Transient;
 import lombok.Getter;
@@ -11,9 +12,6 @@ import java.util.regex.Pattern;
 public class PinNumber {
     @Transient
     private static final String PIN_REGEX = "^\\d{4}$";
-
-    @Transient
-    public final static String NO_PIN = "NO_PIN";
 
     private String pinNumber;
 
@@ -28,6 +26,6 @@ public class PinNumber {
         if (Pattern.matches(PIN_REGEX, pinNumber)) {
             return pinNumber;
         }
-        return NO_PIN;
+        throw new InvalidPinNumberException();
     }
 }
